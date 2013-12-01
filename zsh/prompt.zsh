@@ -1,8 +1,4 @@
 #! /bin/zsh
-#################
-#Powerline support (to get a symbol that looks like a big arrow)
-#################
-#. /usr/share/zsh/site-contrib/powerline.zsh
 
 #################
 #Everything about prompt

@@ -4,12 +4,15 @@
 #Theme colors
 #################
 
-#Variables used in various modules to get a color
-#A little buggy for now, we need proper $FG and $BG
-#that can handle alphanumerical color AND 256 dec color code
-#see ./colors.zsh
-#256-colors absolutely needs three digits
+# Variables used in various modules to get a color
 
+# 256-colors absolutely need three digits
+# Color are name after lscolor, and may not refleat what the terminal actual show
+#available named colors : white black red green yellow blue magenta cyan grey
+#
+# Those bright color are not available as background color :
+# brightblack brightred brightgreen brightyellow brightblue
+# brightmagenta brightcyan brightgrey
 ZSH_THEME_HOST_BG="098"
 ZSH_THEME_PWD_BG1="131"
 ZSH_THEME_PWD_FG1="white"
