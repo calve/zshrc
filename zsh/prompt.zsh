@@ -7,11 +7,8 @@
 #Reloading RPROMPT each time ?
 setopt PROMPT_SUBST
 
-#goudale@latitude ~/Cours/S4/TW/TD1 $  
-
-
 function batterystatus () {
-    python2 $HOME/Code/batsysfs.py
+    python2 $SOURCES_FILES_DIR/batsysfs/batsysfs.py
 }
 
 function arrow () {
