@@ -1,0 +1,6 @@
+Clone me, then
+
+cd zshrc
+ln -s ./zshrc .zshrc                                                                              
+ln -s ./zsh/ .zsh 
+
