@@ -49,10 +49,46 @@ FX=(
     reverse   "%{[07m%}" no-reverse   "%{[27m%}"
 )
 
+
+FG=(
+    reset          "%{[m%}"
+    white          "%{[1m%}"
+    black          "%{[30m%}"
+    red            "%{[31m%}"
+    green          "%{[32m%}"
+    yellow         "%{[33m%}"
+    blue           "%{[34m%}"
+    magenta        "%{[35m%}"
+    cyan           "%{[36m%}"
+    grey           "%{[37m%}"
+    brightblack    "%{[1;30m%}"
+    brightred      "%{[1;31m%}"
+    brightgreen    "%{[1;32m%}"
+    brightyellow   "%{[1;33m%}"
+    brightblue     "%{[1;34m%}"
+    brightmagenta  "%{[1;35m%}"
+    brightcyan     "%{[1;36m%}"
+    brightgrey     "%{[1;37m%}"
+)
+
+BG=(
+    reset    "%{[00m%}"
+    white    "%{[00m%}"
+    black    "%{[40m%}"
+    red      "%{[41m%}"
+    green    "%{[42m%}"
+    yellow   "%{[43m%}"
+    blue     "%{[44m%}"
+    magenta  "%{[45m%}"
+    cyan     "%{[46m%}"
+    grey     "%{[47m%}"
+)
+
 for color in {000..255}; do
     FG[$color]="%{[38;5;${color}m%}"
     BG[$color]="%{[48;5;${color}m%}"
 done
+
 
 # Show all 256 colors with color number
 function spectrum_ls() {
