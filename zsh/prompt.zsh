@@ -41,7 +41,7 @@ function arrow () {
 
 P_USER="%{$FG[$ZSH_THEME_USER_FG]%}%{$bg_no_bold[$ZSH_THEME_USER_BG]%}%n$(arrow $ZSH_THEME_USER_BG $ZSH_THEME_HOST_BG)"
 P_HOST="$BG[$ZSH_THEME_HOST_BG]%{$fg[black]%}%m$(arrow $ZSH_THEME_HOST_BG $ZSH_THEME_PWD_BG1)"
-P_WHO="$BG[$ZSH_THEME_WHO_BG]%{$FB[$ZSH_THEME_HOST_FG]%}%(!.#.$)$(arrow $ZSH_THEME_WHO_BG default)"
+P_WHO="$BG[$ZSH_THEME_WHO_BG]%{$FG[$ZSH_THEME_HOST_FG]%}%(!.#.$)$(arrow $ZSH_THEME_WHO_BG default)"
 
 #p_pwd is define in ./git.zsh
 PROMPT='${P_USER}${P_HOST}$(p_pwd)
