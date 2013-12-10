@@ -77,7 +77,7 @@ function p_pwd () {
 	fi
 
     else
-	PARENTDIR="%{$BG[$ZSH_THEME_PWD_BG1]%}%{$FG[$ZSH_THEME_PWD_FG1]%}$(dirname $(print -P %3~))"
+	PARENTDIR="%{$BG[$ZSH_THEME_PWD_BG1]%}%{$FG[$ZSH_THEME_PWD_FG1]%}$(dirname "$(print -P %3~)")"
 	THISDIR="%{$BG[$ZSH_THEME_PWD_BG2]%}%{$FG[$ZSH_THEME_PWD_FG2]%}$(print -P %1~)$(arrow $ZSH_THEME_PWD_BG2 default)"
     fi
 
