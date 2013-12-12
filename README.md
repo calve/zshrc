@@ -22,6 +22,11 @@ Include
   * 256 colors
   * various stuff
 
+Note
+----
+Have a look to [Powerline](https://github.com/Lokaltog/powerline "Powerline github") to get that array symbol.
+If for some reason you don't won't to use it, please have a look at zsh/prompt.zsh to use another symbol as separator.
+
 Todo
 ----
 
