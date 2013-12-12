@@ -28,7 +28,7 @@ man() {
 #################
 #syntax highlight in zsh
 #################
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $SOURCES_FILES_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=blue'
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=blue'
 
