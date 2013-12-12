@@ -1,21 +1,29 @@
-Clone me, then
+My Zero Shell config files !
+============================
 
-cd zshrc
-ln -s ./zshrc $HOME/.zshrc       
-ln -s ./zsh/ $HOME/.zsh/ 
-
+Have a quick overview
+---------------------
 ![A screenshot of what my .zshrc does](zsh.png)
 
-######
-INCLUDED
+Use me
+------
+Clone me, then
+
+* cd zshrc
+* ln -s ./zshrc $HOME/.zshrc       
+* ln -s ./zsh/ $HOME/.zsh/ 
+* zsh
+
+Include
+-------
 
   * syntax highlight
-  * battery states
+  * battery state
   * 256 colors
   * various stuff
 
-######
-TODO
+Todo
+----
 
   * Clean git support
 
