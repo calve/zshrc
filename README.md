@@ -10,8 +10,8 @@ Use me
 Clone me, then
 
 * cd zshrc
-* ln -s ./zshrc $HOME/.zshrc       
-* ln -s ./zsh/ $HOME/.zsh/ 
+* ln -s $PWD/zshrc $HOME/.zshrc       
+* ln -s $PWD/zsh $HOME/.zsh
 * zsh
 
 Include
