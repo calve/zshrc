@@ -47,5 +47,5 @@ P_WHO="$BG[$ZSH_THEME_WHO_BG]%{$FG[$ZSH_THEME_HOST_FG]%}%(!.#.$)$(arrow $ZSH_THE
 PROMPT='${P_USER}${P_HOST}$(p_pwd)
 ${P_WHO}%{$reset_color%}'
 
-RP_STATUS="%{$fg[default]%}%(?..%{$fg[red]%}%{$fg[default]%}%{$bg[red]%}%?)"
-RPROMPT='${RP_STATUS}%{$fg[black]%}$(batterystatus)%{$reset_color%}'
+RP_STATUS="$FG[default]%(?..$FG[$ZSH_THEME_STATUS_BG]$FG[$ZSH_THEME_STATUS_FG]$BG[$ZSH_THEME_STATUS_BG]%?)"
+RPROMPT='${RP_STATUS}%{$FG[black]%}$(batterystatus)%{$reset_color%}'
