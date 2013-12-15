@@ -24,12 +24,10 @@ function arrow () {
     #echo -n $FX[reverse]
     case $1 in
 	('') ;;
-	(*[^0-9]*|'') echo -n "%{$fg_no_bold[$1]%}";;
 	(*) echo -n $FG[$1];;
     esac
     case $2 in
 	('default') echo -n "%{\033[49m%}";;
-	(*[^0-9]*|'') echo -n "%{$bg[$2]%}";;
 	(*) echo -n $BG[$2];;
     esac
     if [[ -n $DISPLAY ]]; then
@@ -41,8 +39,8 @@ function arrow () {
 }
 
 
-P_USER="%{$FG[$ZSH_THEME_USER_FG]%}%{$bg_no_bold[$ZSH_THEME_USER_BG]%}%n$(arrow $ZSH_THEME_USER_BG $ZSH_THEME_HOST_BG)"
-P_HOST="$BG[$ZSH_THEME_HOST_BG]%{$fg[black]%}%m$(arrow $ZSH_THEME_HOST_BG $ZSH_THEME_PWD_BG1)"
+P_USER="%{$FG[$ZSH_THEME_USER_FG]%}%{$BG[$ZSH_THEME_USER_BG]%}%n$(arrow $ZSH_THEME_USER_BG $ZSH_THEME_HOST_BG)"
+P_HOST="$BG[$ZSH_THEME_HOST_BG]$FG[black]%m$(arrow $ZSH_THEME_HOST_BG $ZSH_THEME_PWD_BG1)"
 P_WHO="$BG[$ZSH_THEME_WHO_BG]%{$FG[$ZSH_THEME_HOST_FG]%}%(!.#.$)$(arrow $ZSH_THEME_WHO_BG default)"
 
 #p_pwd is define in ./git.zsh
