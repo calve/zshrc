@@ -13,5 +13,5 @@ bindkey -e
 
 #Define my PATH
 
-PATH=$PATH:$HOME/bin
+PATH=$HOME/bin:$PATH
 export PATH
