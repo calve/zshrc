@@ -3,6 +3,12 @@
 #git integration
 #################
 
+#Config
+
+#Basedir to generate statistics
+GITSTATS_DIR=~/Vrac/gitstats/
+
+
 #Needed to get git state in prompt
 source ~/.zsh/zsh-git-prompt/zshrc.sh
 ZSH_THEME_GIT_PROMPT_NOCACHE="1"
@@ -12,6 +18,11 @@ alias g="git"
 alias go="git checkout"
 
 alias lg="~/Code/gitls.sh"
+
+#gitstats is a software that generate statistics on a git rep
+function git_gen_stats() {
+    gitstats . $GITSTATS_DIR$(basename $PWD)
+}
 
 #Extra info about a git repo states
 git_extra_info () {
