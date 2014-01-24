@@ -43,7 +43,7 @@ git_extra_info () {
 	fi
 	STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
 	echo "$STATUS"
-    fi    
+    fi  
 }
 
 #Give a function to get current git state, or simple directory if not in git
@@ -55,8 +55,15 @@ function p_pwd () {
 	#This variable will save the "current" background color
 	CURRENTCOLOR=""
 	#Get repo name
-	PARENTDIR="%{$BG[$ZSH_THEME_PWD_BG1]%}%{$FG[0]%}$(basename $(dirname $(git rev-parse --show-toplevel)))"
-	THISDIR="%{$BG[$ZSH_THEME_PWD_BG2]%}%{$fg[black]%}"
+	PARENTDIR="$(basename $(dirname $(git rev-parse --show-toplevel)))"
+	
+	#Check $PARENTDIR pertinence
+	if [ "$PARENTDIR" != "." ]; then
+	    PARENTDIR="%{$BG[$ZSH_THEME_PWD_BG1]%}%{$FG[$ZSH_THEME_PWD_FG1]%}$PARENTDIR"
+	else
+	    PARENTDIR=""
+	fi
+	THISDIR="%{$BG[$ZSH_THEME_PWD_BG2]%}%{$FG[$ZSH_THEME_PWD_FG2]%}"
 	THISDIR+="$(basename $(git rev-parse --show-toplevel))$(arrow $ZSH_THEME_PWD_BG2 black)"
 	CURRENTCOLOR="black"
 
@@ -88,7 +95,13 @@ function p_pwd () {
 	fi
 
     else
-	PARENTDIR="%{$BG[$ZSH_THEME_PWD_BG1]%}%{$FG[$ZSH_THEME_PWD_FG1]%}$(dirname "$(print -P %3~)")"
+	PARENTDIR="$(dirname "$(print -P %3~)")"
+	#Check $PARENTDIR pertinence
+	if [ "$PARENTDIR" != "." ]; then
+	    PARENTDIR="%{$BG[$ZSH_THEME_PWD_BG1]%}%{$FG[$ZSH_THEME_PWD_FG1]%}$PARENTDIR"
+	else
+	    PARENTDIR=""
+	fi
 	THISDIR="%{$BG[$ZSH_THEME_PWD_BG2]%}%{$FG[$ZSH_THEME_PWD_FG2]%}$(print -P %1~)$(arrow $ZSH_THEME_PWD_BG2 default)"
     fi
 
