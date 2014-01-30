@@ -15,13 +15,13 @@
 # Those bright color are not available as background color :
 # brightblack brightred brightgreen brightyellow brightblue
 # brightmagenta brightcyan brightgrey
-ZSH_THEME_USER_BG="green"
+ZSH_THEME_USER_BG=$[$RANDOM % 256]
 ZSH_THEME_USER_FG="black"
-ZSH_THEME_HOST_BG="156"
+ZSH_THEME_HOST_BG=$[$RANDOM % 256]
 ZSH_THEME_HOST_FG="black"
 ZSH_THEME_PWD_BG1="179"
 ZSH_THEME_PWD_FG1="black"
-ZSH_THEME_PWD_BG2="025"
+ZSH_THEME_PWD_BG2="25"
 ZSH_THEME_PWD_FG2="white"
 ZSH_THEME_WHO_BG="209"
 ZSH_THEME_WHO_FG="black"
