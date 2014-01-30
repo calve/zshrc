@@ -6,7 +6,9 @@
 
 # Variables used in various modules to get a color
 
-# 256-colors absolutely need three digits
+# You can use named colors or number
+# Use spectrum_bls to list all 256 colors and their numbers
+
 # Color are name after lscolor, and may not refleat what the terminal actual show
 #available named colors : white black red green yellow blue magenta cyan grey
 #
