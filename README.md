@@ -19,6 +19,7 @@ Include
 
   * syntax highlight
   * battery state
+  * http_proxy state
   * 256 colors
   * various stuff
 
