@@ -3,9 +3,14 @@ function proxy_lille1() {
     if [ -n "$http_proxy" ]; then
 	unset http_proxy;
 	unset https_proxy;
+	unset HTTP_PROXY;
+	unset HTTPS_PROXY;
     else
-	export http_proxy="cache-etu.univ-lille1.fr:3128";
-	export https_proxy="cache-etu.univ-lille1.fr:3128";
+	proxy = "cache-etu.univ-lille1.fr:3128";
+	export http_proxy = $proxy;
+	export https_proxy= $proxy;
+	export HTTP_PROXY = $proxy;
+	export HTTPS_PROXY= $proxy;
     fi 
 }
 
