@@ -38,12 +38,6 @@ function arrow () {
     echo -n %{$reset_color%}
 }
 
-function rp_proxy () {
-    if [ -n "$http_proxy" ]; then
-	echo "$FG[$ZSH_THEME_PROXY_BG]$FG[$ZSH_THEME_PROXY_FG]$BG[$ZSH_THEME_PROXY_BG]$http_proxy"
-    fi 
-}
-
 P_USER="%{$FG[$ZSH_THEME_USER_FG]%}%{$BG[$ZSH_THEME_USER_BG]%}%n$(arrow $ZSH_THEME_USER_BG $ZSH_THEME_HOST_BG)"
 P_HOST="$BG[$ZSH_THEME_HOST_BG]$FG[black]%m$(arrow $ZSH_THEME_HOST_BG $ZSH_THEME_PWD_BG1)"
 P_WHO="$BG[$ZSH_THEME_WHO_BG]%{$FG[$ZSH_THEME_HOST_FG]%}%(!.#.$)$(arrow $ZSH_THEME_WHO_BG default)"
