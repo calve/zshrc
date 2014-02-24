@@ -17,7 +17,22 @@ ZSH_THEME_GIT_PROMPT_NOCACHE="1"
 alias g="git"
 alias go="git checkout"
 
-alias lg="~/Code/gitls.sh"
+#List files tracked by git and show their last commits
+function lg() {
+    FILES=`git ls-tree --name-only HEAD $1`
+    MAXLEN=0
+    for f in `git ls-tree --name-only HEAD $1`; do
+	if [ ${#f} -gt $MAXLEN ]; then
+            MAXLEN=${#f}
+	fi
+    done
+    #Yup, this is redondant, i can't get it to work with $FILES
+    for f in `git ls-tree --name-only HEAD $1`; do 
+	str=$(git log -1 --decorate --pretty=format:"%C(green)%cr%Creset" $f)
+	str2=$(git log -1 --decorate --pretty=format:"%C(cyan)%h%Creset %s %C(yellow)(%cn)%Creset" $f)
+	printf "%-${MAXLEN}s \t-- %s \t %s\n" "$f" "$str" "$str2"
+    done
+}
 
 #gitstats is a software that generate statistics on a git rep
 function git_gen_stats() {
