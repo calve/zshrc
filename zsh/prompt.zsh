@@ -9,7 +9,7 @@ setopt PROMPT_SUBST
 
 function batterystatus () {
     if [ -e /sys/class/power_supply/BAT0/uevent ]; then
-	python2 $SOURCES_FILES_DIR/batsysfs/batsysfs.py
+	python ~/.zsh/battery/battery.py
     fi
 }
 
