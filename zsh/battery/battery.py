@@ -114,7 +114,6 @@ def constructProgressBar():
     tmp = ""
     for i in range(length):
         tmp = tmp + char_separator
-    tmp = tmp + " "
     return tmp
 
 def getPromptColor(prompt):
@@ -136,19 +135,18 @@ def printProgressBar(prompt,color1=color_green1,color2=color_green2):
     """ Print the progress bar given two colors
     """
     for i in range(len(prompt)):
-
-        # if i==len(prompt)-1 and prompt[i] != char_separator:
-        #     if i%2 == 0 :
-        #         print_color(prompt[i],fg=color2,bg=color1,end="")
-        #     else :
-        #         print_color(prompt[i],fg=color1,bg=color2,end="")
-        # else:
-        if i==0 :
-            print_color(prompt[i],fg=color1,bg=None,end="")
-        elif i%2 == 0 :
-            print_color(prompt[i],fg=color1,bg=color2,end="")
+        if i==len(prompt)-1 and prompt[i] != char_separator:
+            if i%2 == 0 :
+                print_color(prompt[i],fg=color2,bg=color1,end="")
+            else :
+                print_color(prompt[i],fg=color1,bg=color2,end="")
         else:
-            print_color(prompt[i],fg=color2,bg=color1,end="")
+            if i==0 :
+                print_color(prompt[i],fg=color1,bg=None,end="")
+            elif i%2 == 0 :
+                print_color(prompt[i],fg=color1,bg=color2,end="")
+            else:
+                print_color(prompt[i],fg=color2,bg=color1,end="")
 
 
 def prompt():
@@ -161,7 +159,8 @@ def prompt():
     else:
         prompt=constructProgressBar()
         if state == "Charging":
-            prompt = prompt + char_charging + " "
+            prompt = prompt + char_charging
+        prompt = prompt + " "
         color1,color2 = getPromptColor(prompt) 
         printProgressBar(prompt,color1,color2)
 
