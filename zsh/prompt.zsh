@@ -7,6 +7,10 @@
 #Reloading RPROMPT each time ?
 setopt PROMPT_SUBST
 
+#A nicer prompt for python virtual env
+VIRTUAL_ENV_DISABLE_PROMPT="1"
+export VIRTUAL_ENV_DISABLE_PROMPT
+
 function batterystatus () {
     if [ -e /sys/class/power_supply/BAT0/uevent ]; then
 	python ~/.zsh/battery/battery.py
@@ -50,19 +54,26 @@ function p_host() {
     echo -n "%m"
 }
 
+function p_who () {
+    if [ -n "$VIRTUAL_ENV" ]; then
+	arrow $ZSH_THEME_VENV_BG $ZSH_THEME_VENV_FG
+	echo -n $(basename "$VIRTUAL_ENV")
+    else
+	arrow $ZSH_THEME_WHO_BG $ZSH_THEME_WHO_FG
+	echo -n "%(!.#.$)"
+    fi
+}
+
 function prompt() {
     p_user
     p_host
     p_pwd   #p_pwd is define in ./git.zsh
     arrow "reset" "reset"
     echo
-    arrow $ZSH_THEME_WHO_BG $ZSH_THEME_WHO_FG
-    echo -n "$P_WHO"
+    p_who
     arrow "reset" "reset"
 }
 
-
-P_WHO="%(!.#.$)"
 PROMPT='$(prompt)'
 
 RP_STATUS="$FG[default]%(?..$FG[$ZSH_THEME_STATUS_BG]$FG[$ZSH_THEME_STATUS_FG]$BG[$ZSH_THEME_STATUS_BG]%?)"
