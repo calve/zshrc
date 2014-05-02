@@ -39,30 +39,7 @@ function git_gen_stats() {
     gitstats . $GITSTATS_DIR$(basename $PWD)
 }
 
-#Extra info about a git repo states
-git_extra_info () {
-    if [ -n "$__CURRENT_GIT_STATUS" ]; then
-	STATUS="$ZSH_THEME_GIT_PROMPT_PREFIX"
-	#STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_SEPARATOR"
-	if [ "$GIT_STAGED" -ne "0" ]; then
-	    STATUS="$STATUS$(arrow default yellow)$GIT_STAGED"
-	fi
-	if [ "$GIT_CONFLICTS" -ne "0" ]; then
-	    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_SEPARATOR$ZSH_THEME_GIT_PROMPT_CONFLICTS$GIT_CONFLICTS"
-	fi
-	if [ "$GIT_CHANGED" -ne "0" ]; then
-	    STATUS="$STATUS$(arrow '' yellow)$GIT_CHANGED"
-	fi
-	if [ "$GIT_UNTRACKED" -ne "0" ]; then
-	    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_SEPARATOR$ZSH_THEME_GIT_PROMPT_UNTRACKED$GIT_UNTRACKED"
-	fi
-	STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
-	echo "$STATUS"
-    fi  
-}
-
 #Give a function to get current git state, or simple directory if not in git
-
 function p_pwd () {
 #Need zsh-git-prompt
 
