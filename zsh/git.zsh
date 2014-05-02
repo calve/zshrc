@@ -65,61 +65,51 @@ git_extra_info () {
 
 function p_pwd () {
 #Need zsh-git-prompt
-    
-    if [ -n "$__CURRENT_GIT_STATUS" ]; then #Si on est dans un repertoire git
-	#This variable will save the "current" background color
-	CURRENTCOLOR=""
+
+    arrow $ZSH_THEME_PWD_BG1 $ZSH_THEME_PWD_FG1
+    if [ -n "$__CURRENT_GIT_STATUS" ]; then
 	#Get repo name
-	PARENTDIR="$(basename $(dirname $(git rev-parse --show-toplevel)))"
+	echo -n "$(basename $(dirname $(git rev-parse --show-toplevel)))"
 	
 	#Check $PARENTDIR pertinence
 	if [ "$PARENTDIR" != "." ]; then
-	    PARENTDIR="%{$BG[$ZSH_THEME_PWD_BG1]%}%{$FG[$ZSH_THEME_PWD_FG1]%}$PARENTDIR"
-	else
-	    PARENTDIR=""
+	    echo -n $PARENTDIR
 	fi
-	THISDIR="%{$BG[$ZSH_THEME_PWD_BG2]%}%{$FG[$ZSH_THEME_PWD_FG2]%}"
-	THISDIR+="$(basename $(git rev-parse --show-toplevel))$(arrow $ZSH_THEME_PWD_BG2 black)"
-	CURRENTCOLOR="black"
+	arrow $ZSH_THEME_PWD_BG2 $ZSH_THEME_PWD_FG2
+	echo -n "$(basename $(git rev-parse --show-toplevel))"
+	arrow black  
 
 	#Get a (branch) name and a (state) color for HEAD with git_super_status set by zsh-git-prompt
-	THISDIR+="%{$bg[black]%}$(git_super_status)"
+	echo -n "$(git_super_status)"
 	
 	#Print how much files are untracked
 	if [ "$GIT_UNTRACKED" -ne "0" ]; then
-	    THISDIR+="$(arrow $CURRENTCOLOR $ZSH_THEME_GIT_UNTRACKED_BG)%{$BG[$ZSH_THEME_GIT_UNTRACKED_BG]%}$FG[$ZSH_THEME_GIT_UNTRACKED_FG]$GIT_UNTRACKED"
-	    CURRENTCOLOR="$ZSH_THEME_GIT_UNTRACKED_BG"
+	    arrow $ZSH_THEME_GIT_UNTRACKED_BG
+	    echo -n "$FG[$ZSH_THEME_GIT_UNTRACKED_FG]$GIT_UNTRACKED"
 	fi
 	#Print how much files changed
 	if [ "$GIT_CHANGED" -ne "0" ]; then
-	    THISDIR+="$(arrow $CURRENTCOLOR $ZSH_THEME_GIT_CHANGED_BG)%{$BG[$ZSH_THEME_GIT_CHANGED_BG]%}$FG[$ZSH_THEME_GIT_CHANGED_FG]$GIT_CHANGED"
-	    CURRENTCOLOR="$ZSH_THEME_GIT_CHANGED_BG"
+	    arrow $ZSH_THEME_GIT_CHANGED_BG $ZSH_THEME_GIT_CHANGED_FG
+	    echo -n "$GIT_CHANGED"
 	fi
 	#Print how much commit
 	if [ "$GIT_STAGED" -ne "0" ]; then
-	    THISDIR+="$(arrow $CURRENTCOLOR $ZSH_THEME_GIT_STAGED_BG)%{$BG[$ZSH_THEME_GIT_STAGED_BG]%}$FG[$ZSH_THEME_GIT_STAGED_FG]$GIT_STAGED"
-	    CURRENTCOLOR="$ZSH_THEME_GIT_STAGED_BG"
+	    arrow $ZSH_THEME_GIT_STAGED_BG $ZSH_THEME_GIT_STAGED_FG
+	    echo -n "$GIT_STAGED"
 	fi
       
 	if [[ -n $(git rev-parse --show-prefix 2>/dev/null) ]]; then #Si on est dans un sous répertoire
-	    THISDIR+="$(arrow $CURRENTCOLOR $ZSH_THEME_PWD_BG2)"
-	    THISDIR+="%{$BG[$ZSH_THEME_PWD_BG2]%}%{$fg[black]%}$(git rev-parse --show-prefix)"
-	    THISDIR+="$(arrow $ZSH_THEME_PWD_BG2 default)"
-	else
-	    THISDIR+="$(arrow $CURRENTCOLOR default)" 
+	    arrow $ZSH_THEME_PWD_BG2
+	    echo -n "$FG[black]$(git rev-parse --show-prefix)"
 	fi
 
     else
 	PARENTDIR="$(dirname "$(print -P %3~)")"
 	#Check $PARENTDIR pertinence
 	if [ "$PARENTDIR" != "." ]; then
-	    PARENTDIR="%{$BG[$ZSH_THEME_PWD_BG1]%}%{$FG[$ZSH_THEME_PWD_FG1]%}$PARENTDIR"
-	else
-	    PARENTDIR=""
+	    echo -n "$PARENTDIR"
 	fi
-	THISDIR="%{$BG[$ZSH_THEME_PWD_BG2]%}%{$FG[$ZSH_THEME_PWD_FG2]%}$(print -P %1~)$(arrow $ZSH_THEME_PWD_BG2 default)"
+        print -Pn %1~
+	arrow $ZSH_THEME_PWD_BG2
     fi
-
-    #Finally, print everything
-    echo -n "$PARENTDIR$(arrow $ZSH_THEME_PWD_BG1 $ZSH_THEME_PWD_BG2 )$THISDIR"
 }

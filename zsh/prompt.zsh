@@ -13,6 +13,7 @@ function batterystatus () {
     fi
 }
 
+GLOBAL_ARROW_COLOR="reset"
 function arrow () {
 #please call me with two arguments
 # first argument is arrow fill color
@@ -22,29 +23,47 @@ function arrow () {
 # litteral to use ANSI 16 colors
 #    echo -n %{$reset_color%}
     #echo -n $FX[reverse]
-    case $1 in
-	('') ;;
-	(*) echo -n $FG[$1];;
-    esac
-    case $2 in
-	('default') echo -n "%{\033[49m%}";;
-	(*) echo -n $BG[$2];;
-    esac
-    if [[ -n $DISPLAY ]]; then
-	echo -n ""
-    else
-	echo -n ">"
+
+    echo -n $BG[$1];
+    if [[ "$GLOBAL_ARROW_COLOR" != "reset" ]]; then
+	echo -n $FG[$GLOBAL_ARROW_COLOR]
+	
+	if [[ -n $DISPLAY ]]; then
+    	    echo -n ""
+	else
+    	    echo -n ">"
+	fi
     fi
-    echo -n %{$reset_color%}
+    if [ -n $2 ]; then
+	echo -n $FG[$2]
+    fi
+    GLOBAL_ARROW_COLOR=$1
 }
 
-P_USER="%{$FG[$ZSH_THEME_USER_FG]%}%{$BG[$ZSH_THEME_USER_BG]%}%n$(arrow $ZSH_THEME_USER_BG $ZSH_THEME_HOST_BG)"
-P_HOST="$BG[$ZSH_THEME_HOST_BG]$FG[black]%m$(arrow $ZSH_THEME_HOST_BG $ZSH_THEME_PWD_BG1)"
-P_WHO="$BG[$ZSH_THEME_WHO_BG]%{$FG[$ZSH_THEME_HOST_FG]%}%(!.#.$)$(arrow $ZSH_THEME_WHO_BG default)"
+function p_user() {
+    arrow  $ZSH_THEME_USER_BG $ZSH_THEME_USER_FG
+    echo -n "%n"
+}
 
-#p_pwd is define in ./git.zsh
-PROMPT='${P_USER}${P_HOST}$(p_pwd)
-${P_WHO}%{$reset_color%}'
+function p_host() {
+    arrow $ZSH_THEME_HOST_BG $ZSH_THEME_HOST_FG 
+    echo -n "%m"
+}
+
+function prompt() {
+    p_user
+    p_host
+    p_pwd   #p_pwd is define in ./git.zsh
+    arrow "reset" "reset"
+    echo
+    arrow $ZSH_THEME_WHO_BG $ZSH_THEME_WHO_FG
+    echo -n "$P_WHO"
+    arrow "reset" "reset"
+}
+
+
+P_WHO="%(!.#.$)"
+PROMPT='$(prompt)'
 
 RP_STATUS="$FG[default]%(?..$FG[$ZSH_THEME_STATUS_BG]$FG[$ZSH_THEME_STATUS_FG]$BG[$ZSH_THEME_STATUS_BG]%?)"
 RPROMPT='$(rp_proxy)${RP_STATUS}%{$FG[black]%}$(batterystatus)%{$reset_color%}'
