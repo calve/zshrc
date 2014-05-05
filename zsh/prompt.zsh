@@ -65,8 +65,10 @@ function p_who () {
 }
 
 function prompt() {
-    p_user
-    p_host
+    if [ $SSH_CONNECTION ]; then
+	p_user
+	p_host
+    fi
     p_pwd   #p_pwd is define in ./git.zsh
     arrow "reset" "reset"
     echo
