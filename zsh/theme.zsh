@@ -17,7 +17,8 @@
 # brightmagenta brightcyan brightgrey
 ZSH_THEME_USER_BG=$[$RANDOM % 256]
 ZSH_THEME_USER_FG="black"
-ZSH_THEME_HOST_BG=$[$RANDOM % 256]
+#ZSH_THEME_HOST_BG=$[$RANDOM % 256] #Uncomment for a different color for the hostname prompt
+ZSH_THEME_HOST_BG=$ZSH_THEME_USER_BG
 ZSH_THEME_HOST_FG="black"
 ZSH_THEME_PWD_BG1="179"
 ZSH_THEME_PWD_FG1="black"
