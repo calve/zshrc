@@ -27,9 +27,10 @@ function arrow () {
 # litteral to use ANSI 16 colors
 #    echo -n %{$reset_color%}
     #echo -n $FX[reverse]
-
-    echo -n $BG[$1];
-    if [ $1 = $GLOBAL_ARROW_COLOR ]; then
+    if [ $1 ]; then
+	echo -n $BG[$1]
+    fi
+    if [ -z "$1" ] || [ "$1" = "$GLOBAL_ARROW_COLOR" ]; then
 	if [ $DEGRADED_PROMPT ]; then
 	    echo -n $DEGRADED_PROMPT
 	else
@@ -46,7 +47,9 @@ function arrow () {
     if [ -n $2 ]; then
 	echo -n $FG[$2]
     fi
-    GLOBAL_ARROW_COLOR=$1
+    if [ $1 ]; then
+	GLOBAL_ARROW_COLOR=$1
+    fi
 }
 
 function p_user() {
