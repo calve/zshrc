@@ -22,14 +22,23 @@ Include
   * http_proxy state
   * 256 colors
   * various stuff
+  * Prompt
+     * git
+     * python virtual env
+	 
 
 Note
 ----
 Have a look to [Powerline](https://github.com/Lokaltog/powerline "Powerline github") to get that arrow symbol.
 If for some reason you don't won't to use it, please have a look at zsh/prompt.zsh to use another symbol as separator.
 
-Todo
-----
 
-  * Clean git support
+FAQ
+---
+
+## I don't see the arrow in my promt ! ##
+
+`export DEGRADED_PROMPT=">"`
+and search the internet for powerline patched fonts
+
 

@@ -29,13 +29,18 @@ function arrow () {
     #echo -n $FX[reverse]
 
     echo -n $BG[$1];
-    if [[ "$GLOBAL_ARROW_COLOR" != "reset" ]]; then
-	echo -n $FG[$GLOBAL_ARROW_COLOR]
-	
-	if [[ -n $DISPLAY ]]; then
-    	    echo -n ""
+    if [ $1 = $GLOBAL_ARROW_COLOR ]; then
+	if [ $DEGRADED_PROMPT ]; then
+	    echo -n $DEGRADED_PROMPT
 	else
-    	    echo -n ">"
+	echo -n ""
+	fi
+    elif [[ "$GLOBAL_ARROW_COLOR" != "reset" ]]; then
+	echo -n $FG[$GLOBAL_ARROW_COLOR]
+	if [ $DEGRADED_PROMPT ]; then
+	    echo -n $DEGRADED_PROMPT
+	else
+	    echo -n ""
 	fi
     fi
     if [ -n $2 ]; then
