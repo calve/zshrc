@@ -14,4 +14,4 @@ zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %
 zstyle :compinstall filename '/home/goudale/.zshrc'
 
 #Completion des options 
-compdef _gnu_generic subdl subdownloader lm airodump-ng convert
+compdef _gnu_generic subdl subdownloader lm airodump-ng convert curl
