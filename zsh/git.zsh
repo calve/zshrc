@@ -44,15 +44,10 @@ function p_pwd () {
 #Need zsh-git-prompt
 
     arrow $ZSH_THEME_PWD_BG1 $ZSH_THEME_PWD_FG1
-    if [ -n "$__CURRENT_GIT_STATUS" ]; then
+    if [ "$__CURRENT_GIT_STATUS" ]; then
 	#Get repo name
 	echo -n "$(basename $(dirname $(git rev-parse --show-toplevel)))"
-	
-	#Check $PARENTDIR pertinence
-	if [ "$PARENTDIR" != "." ]; then
-	    echo -n $PARENTDIR
-	fi
-	arrow $ZSH_THEME_PWD_BG2 $ZSH_THEME_PWD_FG2
+	echo -n "/"
 	echo -n "$(basename $(git rev-parse --show-toplevel))"
 	arrow black  
 
@@ -82,11 +77,13 @@ function p_pwd () {
 
     else
 	PARENTDIR="$(dirname "$(print -P %3~)")"
+	
 	#Check $PARENTDIR pertinence
 	if [ "$PARENTDIR" != "." ]; then
 	    echo -n "$PARENTDIR"
+	    echo -n "/"
 	fi
+
         print -Pn %1~
-	arrow $ZSH_THEME_PWD_BG2
     fi
 }

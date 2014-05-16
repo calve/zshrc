@@ -27,21 +27,29 @@ function arrow () {
 # litteral to use ANSI 16 colors
 #    echo -n %{$reset_color%}
     #echo -n $FX[reverse]
-
-    echo -n $BG[$1];
-    if [[ "$GLOBAL_ARROW_COLOR" != "reset" ]]; then
-	echo -n $FG[$GLOBAL_ARROW_COLOR]
-	
-	if [[ -n $DISPLAY ]]; then
-    	    echo -n ""
+    if [ $1 ]; then
+	echo -n $BG[$1]
+    fi
+    if [ -z "$1" ] || [ "$1" = "$GLOBAL_ARROW_COLOR" ]; then
+	if [ $DEGRADED_PROMPT ]; then
+	    echo -n $DEGRADED_PROMPT
 	else
-    	    echo -n ">"
+	echo -n ""
+	fi
+    elif [[ "$GLOBAL_ARROW_COLOR" != "reset" ]]; then
+	echo -n $FG[$GLOBAL_ARROW_COLOR]
+	if [ $DEGRADED_PROMPT ]; then
+	    echo -n $DEGRADED_PROMPT
+	else
+	    echo -n ""
 	fi
     fi
     if [ -n $2 ]; then
 	echo -n $FG[$2]
     fi
-    GLOBAL_ARROW_COLOR=$1
+    if [ $1 ]; then
+	GLOBAL_ARROW_COLOR=$1
+    fi
 }
 
 function p_user() {
@@ -65,8 +73,10 @@ function p_who () {
 }
 
 function prompt() {
-    p_user
-    p_host
+    if [ $SSH_CONNECTION ]; then
+	p_user
+	p_host
+    fi
     p_pwd   #p_pwd is define in ./git.zsh
     arrow "reset" "reset"
     echo
