@@ -79,7 +79,7 @@ function p_pwd () {
 	PARENTDIR="$(dirname "$(print -P %3~)")"
 	
 	#Check $PARENTDIR pertinence
-	if [ "$PARENTDIR" != "." ]; then
+	if [ "$PARENTDIR" != "." ] && [ "$PARENTDIR" != "/" ]; then
 	    echo -n "$PARENTDIR"
 	    echo -n "/"
 	fi
