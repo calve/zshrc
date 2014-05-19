@@ -135,7 +135,8 @@ def printProgressBar(prompt,color1=color_green1,color2=color_green2):
     """ Print the progress bar given two colors
     """
     for i in range(len(prompt)):
-        if i==len(prompt)-1 and prompt[i] != char_separator:
+        if( i==len(prompt)-1 and prompt[i] != char_separator and
+            prompt[i] != " " ):
             if i%2 == 0 :
                 print_color(prompt[i],fg=color2,bg=color1,end="")
             else :
