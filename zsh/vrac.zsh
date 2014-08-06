@@ -13,5 +13,5 @@ bindkey -e
 
 #Define my PATH
 
-PATH=$HOME/bin:$PATH
+PATH=$HOME/bin:$HOME/.gem/ruby/2.1.0/bin:$PATH
 export PATH
