@@ -5,8 +5,7 @@ import re
 
 uevent_file = "/sys/class/power_supply/BAT0/uevent"
 status_file = "/sys/class/power_supply/BAT0/status"
-remaining_regex = "(?<=CHARGE_NOW=).*"
-full_regex = "(?<=CHARGE_FULL=).*"
+capacity_regex = "(?<=POWER_SUPPLY_CAPACITY=).*"
 char_separator = ""
 char_charging = "↯"
 char_charged = "✓"
@@ -102,11 +101,9 @@ def retreiveFile(filename):
 
 def getPercentage():
     battery_file = retreiveFile(uevent_file)
-    full_re = re.search(full_regex,battery_file)
-    remaining_re = re.search(remaining_regex,battery_file)
-    full = float(full_re.group(0))
-    remaining = float(remaining_re.group(0))
-    return 100*remaining/full
+    capacity_re = re.search(capacity_regex,battery_file)
+    capacity = float(capacity_re.group(0))
+    return capacity
 
 def constructProgressBar():
     percentage = getPercentage()    
