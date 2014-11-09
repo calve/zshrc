@@ -59,8 +59,8 @@ function p_user() {
 
 function p_host() {
     arrow $ZSH_THEME_HOST_BG $ZSH_THEME_HOST_FG
-    if [ -n "$PAYPLUG_ENVIRONMENT" ]; then
-	echo -n "$PAYPLUG_ENVIRONMENT"
+    if [ -n "$PAYPLUG_HOSTNAME" ]; then
+	echo -n "$PAYPLUG_HOSTNAME"
     else
 	echo -n "%m"
     fi
