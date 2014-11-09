@@ -10,7 +10,7 @@ alias hades_retablisseurfichier="sed -i 's/\/home\/ag.de-busschere/\./g' *"
 alias wifi="wicd-cli -yc"
 
 alias kproxyswith="/home/goudale/.kproxyswitch.sh"
-alias skype="xhost +local: && sudo -u skype /usr/bin/skype"
+alias skype="PULSE_LATENCY_MSEC=60 /bin/skype"
 alias box.net="boxfs -s -v -u calvinh34@gmail.com $HOME/Cloud/box.net"
 #alias touchpadOff="xinput set-prop 12 'Device Enabled' 0 "
 #alias touchpadOn="xinput set-prop 12 'Device Enabled' 1 "
