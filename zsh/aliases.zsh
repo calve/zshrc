@@ -24,3 +24,7 @@ alias ll="ls -alh"
 alias df="df -h"
 alias w="wicd-curses"
 alias x="xdg-open"
+
+function record_screen () {
+    ffmpeg -f x11grab -s 1280x800 -r 25 -i :0.0  $1
+}
