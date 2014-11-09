@@ -18,6 +18,7 @@ alias box.net="boxfs -s -v -u calvinh34@gmail.com $HOME/Cloud/box.net"
 alias minecraft="java -jar $HOME/Vrac/MinecraftSP.jar"
 alias vracmount="encfs ~/Image/.vrac ~/Image/vrac"
 alias vracumount="fuser -u ~/Image/vrac"
+alias prof="python3 ~/Code/prof/prof/prof.py"
 
 alias sudo="nocorrect sudo "
 alias ll="ls -alh"
