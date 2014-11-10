@@ -70,6 +70,9 @@ function p_who () {
     if [ -n "$VIRTUAL_ENV" ]; then
 	arrow $ZSH_THEME_VENV_BG $ZSH_THEME_VENV_FG
 	echo -n $(basename "$VIRTUAL_ENV")
+    elif [ -n "$RAILS_ENV" ]; then
+	arrow $ZSH_THEME_RAILS_BG $ZSH_THEME_RAILS_FG
+	echo -n "$RAILS_ENV"
     else
 	arrow $ZSH_THEME_WHO_BG $ZSH_THEME_WHO_FG
 	echo -n "%(!.#.$)"

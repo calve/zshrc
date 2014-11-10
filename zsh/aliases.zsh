@@ -10,7 +10,7 @@ alias hades_retablisseurfichier="sed -i 's/\/home\/ag.de-busschere/\./g' *"
 alias wifi="wicd-cli -yc"
 
 alias kproxyswith="/home/goudale/.kproxyswitch.sh"
-alias skype="xhost +local: && sudo -u skype /usr/bin/skype"
+alias skype="PULSE_LATENCY_MSEC=60 /bin/skype"
 alias box.net="boxfs -s -v -u calvinh34@gmail.com $HOME/Cloud/box.net"
 #alias touchpadOff="xinput set-prop 12 'Device Enabled' 0 "
 #alias touchpadOn="xinput set-prop 12 'Device Enabled' 1 "
@@ -18,9 +18,14 @@ alias box.net="boxfs -s -v -u calvinh34@gmail.com $HOME/Cloud/box.net"
 alias minecraft="java -jar $HOME/Vrac/MinecraftSP.jar"
 alias vracmount="encfs ~/Image/.vrac ~/Image/vrac"
 alias vracumount="fuser -u ~/Image/vrac"
+alias prof="python3 ~/Code/prof/prof/prof.py"
 
 alias sudo="nocorrect sudo "
 alias ll="ls -alh"
 alias df="df -h"
 alias w="wicd-curses"
 alias x="xdg-open"
+
+function record_screen () {
+    ffmpeg -f x11grab -s 1280x800 -r 25 -i :0.0  $1
+}
