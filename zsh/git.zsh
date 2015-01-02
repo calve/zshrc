@@ -27,7 +27,7 @@ function lg() {
 	fi
     done
     #Yup, this is redondant, i can't get it to work with $FILES
-    for f in `git ls-tree --name-only HEAD $1`; do 
+    for f in `git ls-tree --name-only HEAD $1`; do
 	str=$(git log -1 --decorate --pretty=format:"%C(green)%cr%Creset" $f)
 	str2=$(git log -1 --decorate --pretty=format:"%C(cyan)%h%Creset %s %C(yellow)(%cn)%Creset" $f)
 	printf "%-${MAXLEN}s \t-- %s \t %s\n" "$f" "$str" "$str2"
@@ -45,15 +45,16 @@ function p_pwd () {
 
     arrow $ZSH_THEME_PWD_BG1 $ZSH_THEME_PWD_FG1
     if [ "$__CURRENT_GIT_STATUS" ]; then
+        gitdir=$(git rev-parse --show-toplevel)
 	#Get repo name
-	echo -n "$(basename $(dirname $(git rev-parse --show-toplevel)))"
+	echo -n "$(basename $(dirname $gitdir))"
 	echo -n "/"
-	echo -n "$(basename $(git rev-parse --show-toplevel))"
-	arrow black  
+	echo -n "$(basename $gitdir)"
+	arrow black
 
 	#Get a (branch) name and a (state) color for HEAD with git_super_status set by zsh-git-prompt
 	echo -n "$(git_super_status)"
-	
+
 	#Print how much files are untracked
 	if [ "$GIT_UNTRACKED" -ne "0" ]; then
 	    arrow $ZSH_THEME_GIT_UNTRACKED_BG
@@ -69,15 +70,15 @@ function p_pwd () {
 	    arrow $ZSH_THEME_GIT_STAGED_BG $ZSH_THEME_GIT_STAGED_FG
 	    echo -n "$GIT_STAGED"
 	fi
-      
-	if [[ -n $(git rev-parse --show-prefix 2>/dev/null) ]]; then #Si on est dans un sous répertoire
+        git_prefix=$(git rev-parse --show-prefix 2>/dev/null)
+	if [[ -n $git_prefix ]]; then #Si on est dans un sous répertoire
 	    arrow $ZSH_THEME_PWD_BG2
-	    echo -n "$FG[black]$(git rev-parse --show-prefix)"
+	    echo -n "$FG[black]$git_prefix"
 	fi
 
     else
 	PARENTDIR="$(dirname "$(print -P %3~)")"
-	
+
 	#Check $PARENTDIR pertinence
 	if [ "$PARENTDIR" != "." ] && [ "$PARENTDIR" != "/" ]; then
 	    echo -n "$PARENTDIR"
