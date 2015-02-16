@@ -13,7 +13,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT
 
 function batterystatus () {
     if [ -e /sys/class/power_supply/BAT0/uevent ]; then
-	python ~/.zsh/battery/battery.py
+	python3 ~/.zsh/battery/battery.py
     fi
 }
 
