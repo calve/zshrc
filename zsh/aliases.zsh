@@ -28,3 +28,7 @@ alias x="xdg-open"
 function record_screen () {
     ffmpeg -f x11grab -s 1280x800 -r 25 -i :0.0  $1
 }
+
+function record_audio () {
+    arecord -v -V stereo -f dat $1
+}
