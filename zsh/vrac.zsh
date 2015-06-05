@@ -10,6 +10,7 @@ setopt autocd
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
+setopt INC_APPEND_HISTORY
 
 #Define my PATH
 
