@@ -37,3 +37,7 @@ function record_webcam () {
 function record_audio () {
     arecord -v -V stereo -f dat $1
 }
+
+function json () {
+    python3 -m json.tool
+}
