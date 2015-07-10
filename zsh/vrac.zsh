@@ -14,5 +14,5 @@ setopt INC_APPEND_HISTORY
 
 #Define my PATH
 
-PATH=$HOME/bin:$HOME/.gem/ruby/2.2.0/bin:$PATH
+PATH=$HOME/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.local/bin:$PATH
 export PATH
