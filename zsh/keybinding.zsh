@@ -12,6 +12,7 @@ bindkey '^M^M' clear-screen
 
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+bindkey '^R' history-incremental-pattern-search-backward
 
 #https://wiki.archlinux.org/index.php/Zsh
 # create a zkbd compatible hash;
