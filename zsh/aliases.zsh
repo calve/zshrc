@@ -2,7 +2,7 @@
 # Various Aliases
 #################
 alias ls="ls --color=auto"
-alias radiomeuh="mplayer http://pakret.radiomeuh.com:80/big.mp3"
+alias radiomeuh="mplayer http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3"
 alias coldbusted="mplayer http://195.154.217.103:8391/coldbustedradio"
 alias meuh="curl -s http://radiomeuh.com/meuh/playlist/index.php | egrep -ae \"<B>\" | awk -F\"<[bB][rR](.?)>\" '{ print \$2 \" \\\"\"  \$3 \"\\\"\"}' >> ~/meuh && tail -n 1 ~/meuh"
 alias hades="java -jar /home/goudale/.hades/hades.jar"
