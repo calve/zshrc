@@ -1,5 +1,7 @@
 # The following lines were added by compinstall
 
+fpath=(~/.zsh/completions $fpath)
+
 autoload -Uz compinit
 compinit
 
@@ -13,7 +15,5 @@ zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 zstyle :compinstall filename '/home/goudale/.zshrc'
 
-fpath=(~/.zsh/completions $fpath)
-
-#Completion des options 
+#Completion des options
 compdef _gnu_generic subdl subdownloader lm airodump-ng convert curl prof

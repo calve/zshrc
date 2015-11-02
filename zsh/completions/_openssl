@@ -1,4 +1,4 @@
-compdef openssl
+#compdef openssl
 
 # _openssl: Start point {{{
 _openssl() {
