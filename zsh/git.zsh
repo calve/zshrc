@@ -44,7 +44,7 @@ function p_pwd () {
 #Need zsh-git-prompt
 
     arrow $ZSH_THEME_PWD_BG1 $ZSH_THEME_PWD_FG1
-    if [ "$__CURRENT_GIT_STATUS" ]; then
+    if [ "$__CURRENT_GIT_STATUS" != ": 0 0 0 0 0 0" ]; then
         gitdir=$(git rev-parse --show-toplevel)
 	#Get repo name
 	echo -n "$(basename $(dirname $gitdir))"
